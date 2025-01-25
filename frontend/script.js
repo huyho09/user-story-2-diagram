@@ -6,22 +6,21 @@ function convertToMarkdown() {
     const workflowSteps = document.getElementById("workflowSteps").value;
 
     const markdown = `
-A. User Story
+        A. User Story
 
-[AS A] ${role}
+        [AS A] ${role}
 
-[I WANT] ${want}
+        [I WANT] ${want}
 
-[SO THAT] ${soThat}
+        [SO THAT] ${soThat}
 
-B. Acceptance Criteria
+        B. Acceptance Criteria
 
-${criteria}
+        ${criteria}
 
-C. Workflow Steps
+        C. Workflow Steps
 
-${workflowSteps}
-    `;
+        ${workflowSteps}`;
 
     document.getElementById("markdownOutput").innerText = markdown;
 }
