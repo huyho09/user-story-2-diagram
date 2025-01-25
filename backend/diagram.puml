@@ -1,0 +1,34 @@
+@startuml
+
+title Create Employee Workflow
+
+actor Admin
+
+rectangle System {
+    Admin -> System: Login with Admin email and password
+    System --> Admin: Successfully logged in
+
+    Admin -> System: Navigate to Employee tab
+    System --> Admin: Display Create Employee UI
+
+    Admin -> System: Click on Create Employee button
+    System --> Admin: Display Employee Form
+
+    Admin -> System: Fill in employee information
+
+    System -> System: Validate Email
+    alt Email is not unique or invalid
+        System --> Admin: Error: Email must be unique and valid
+    end
+
+    System -> System: Validate Required Inputs
+    alt First Name or Last Name is empty
+        System --> Admin: Error: First Name and Last Name are required
+    else
+        Admin -> System: Click Save Button
+        System -> Database: Save Employee Information
+        System --> Admin: Employee Information Saved
+    end
+}
+
+@enduml

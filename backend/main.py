@@ -12,12 +12,11 @@ CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True, allow_
 @app.route('/generate', methods=['POST'])
 def generate():
     data = request.json.get("user_story")
-    if not data:
-        return jsonify({"error": "No user story provided"}), 400
-    
     plantuml_code = generate_plantuml(data)
-    diagram_url = generate_diagram(plantuml_code)
-    return jsonify({"diagram_url": diagram_url})
+    image_path = generate_diagram(plantuml_code)
+    return send_file(image_path, mimetype='image/png')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
+

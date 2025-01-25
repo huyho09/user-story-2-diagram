@@ -1,22 +1,25 @@
 import subprocess
 import os
-import requests
-import urllib.parse
-from plantuml import PlantUML, PlantUMLHTTPError
 
 def generate_diagram(plantuml_code):
-    base_url = "http://www.plantuml.com/plantuml/png/"
-    encoded_code = urllib.parse.quote(plantuml_code)
-    full_url = f"{base_url}{encoded_code}"
+    file_path = "diagram.puml"
+    image_path = "diagram.png"
 
+    with open(file_path, "w") as file:
+        file.write(plantuml_code)
+
+    # Specify the correct PlantUML path
+    plantuml_path = "/opt/homebrew/bin/plantuml"  # macOS/Linux example
+
+    # Verify that the PlantUML path exists
+    if not os.path.exists(plantuml_path):
+        raise FileNotFoundError(f"PlantUML not found at: {plantuml_path}")
+
+    # Use subprocess to execute PlantUML
     try:
-        response = requests.get(full_url)
-        if response.status_code == 200:
-            print("Diagram generated successfully:", full_url)
-            return full_url
-        else:
-            print(f"Error: HTTP {response.status_code}")
-            return None
-    except requests.RequestException as e:
-        print(f"Request failed: {str(e)}")
+        subprocess.run([plantuml_path, file_path], check=True)
+        print("Diagram generated successfully.")
+        return image_path
+    except subprocess.CalledProcessError as e:
+        print(f"Error running PlantUML: {str(e)}")
         return None
