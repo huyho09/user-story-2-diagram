@@ -2,3 +2,5 @@ flask
 openai
 plantuml
 python-dotenv
+six
+requests
