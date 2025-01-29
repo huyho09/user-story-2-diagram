@@ -1,34 +1,45 @@
+To convert the provided user story into a PlantUML workflow diagram, you can use the following PlantUML syntax. PlantUML is used to create diagrams from plain text language, so you'll describe each step and decision point in the system workflow:
+
+```plaintext
 @startuml
 
-title Create Employee Workflow
+!define VALID_EMAIL_CHECK actor "Check Valid Email"
+!define UNIQUE_EMAIL_CHECK actor "Check Email Uniqueness"
+!define REQUIRED_FIELDS_CHECK actor "Check Required Fields"
 
-actor Admin
+actor Admin as admin
+actor "System" as system
 
-rectangle System {
-    Admin -> System: Login with Admin email and password
-    System --> Admin: Successfully logged in
+admin -> system: Login with Admin email and password
+system -> admin: Shows Employee tab
+admin -> system: Navigate to Employee tab
+system -> admin: Shows Create Employee Button
+admin -> system: Click on Create Employee Button
+admin -> system: Fill in employee's information
 
-    Admin -> System: Navigate to Employee tab
-    System --> Admin: Display Create Employee UI
+system -> VALID_EMAIL_CHECK: Check if email is valid
+VALID_EMAIL_CHECK --> system: Valid email / Invalid email
 
-    Admin -> System: Click on Create Employee button
-    System --> Admin: Display Employee Form
+system -> UNIQUE_EMAIL_CHECK: Check if email is unique
+UNIQUE_EMAIL_CHECK --> system: Unique email / Email already exists
 
-    Admin -> System: Fill in employee information
+system -> REQUIRED_FIELDS_CHECK: Check required fields
+REQUIRED_FIELDS_CHECK --> system: All fields filled / Missing fields
 
-    System -> System: Validate Email
-    alt Email is not unique or invalid
-        System --> Admin: Error: Email must be unique and valid
-    end
-
-    System -> System: Validate Required Inputs
-    alt First Name or Last Name is empty
-        System --> Admin: Error: First Name and Last Name are required
-    else
-        Admin -> System: Click Save Button
-        System -> Database: Save Employee Information
-        System --> Admin: Employee Information Saved
-    end
-}
+alt All validations passed
+    admin -> system: Click on Save Button
+    system -> system: Save employee to database
+else Any validation fails
+    system -> admin: Show appropriate error message
+end
 
 @enduml
+```
+
+### Explanation:
+1. **Actors**: Define the user (Admin) and the systems or checks (for email validity, uniqueness, and required fields).
+2. **Steps**: Describe each step taken by the admin and the system, including navigating tabs, clicking buttons, and filling in information.
+3. **Validations**: Check processes for email validity, uniqueness, and required fields, shown as separate actors for clarity.
+4. **Outcome**: Use the `alt` and `else` keywords to indicate different paths depending on whether validations pass or fail. If all validations pass, the system saves the employee data. If any validation fails, an error message is shown.
+
+This code can be pasted into a PlantUML tool or online editor to generate the diagram.

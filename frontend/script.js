@@ -29,11 +29,19 @@ function convertToMarkdown() {
 document.getElementById("userStoryForm").onsubmit = async function (e) {
     e.preventDefault();
     
+    // const markdownData = document.getElementById("markdownOutput").innerText;
+    // const response = await fetch("http://127.0.0.1:5000/generate", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ user_story: markdownData })
+    // });
+
+    // TO DO: using Workflow instead of the whole flow replace markdownData to workflowSteps
     const markdownData = document.getElementById("markdownOutput").innerText;
     const response = await fetch("http://127.0.0.1:5000/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_story: markdownData })
+        body: JSON.stringify({ user_story: workflowSteps })
     });
 
     const result = await response.blob();

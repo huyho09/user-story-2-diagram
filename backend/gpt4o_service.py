@@ -1,5 +1,6 @@
 import openai
 import os
+import re
 from dotenv import load_dotenv
 
 
@@ -19,4 +20,12 @@ def generate_plantuml(user_story):
         messages=[{"role": "user", "content": prompt}]
     )
     
-    return response.choices[0].message.content
+    full_response = response.choices[0].message.content
+    # Extract code block from response using regex
+    match = re.search(r"```(?:plantuml|uml)?\n(.*?)```", full_response, re.DOTALL)
+
+    if match:
+        return match.group(1).strip()  # Extracted code block
+    else:
+        print("No code block found in the response.")
+        return None  # Return None explicitly if no code block is found
