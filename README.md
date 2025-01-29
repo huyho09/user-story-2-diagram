@@ -109,7 +109,9 @@ user-story-2-workflow/
 
 ---
 ## To Do
-- Remove Bot comment in the `diagram.puml`. We only need the code to send to GPT-4o
-- Check for the issue of `diagram.png`. The image should be displayed.
-- Allow all CORS block
+- ~Remove Bot comment in the `diagram.puml`. We only need the code to send to GPT-4o~
+- ~Check for the issue of `diagram.png`. The image should be displayed.~
+- ~Allow all CORS block~
 - Proxy config
+- Remove "Convert to Markdown button" and Markdown output
+- Submit button only send the Workflow Steps
