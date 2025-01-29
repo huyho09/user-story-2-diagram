@@ -1,4 +1,4 @@
-# User Story Workflow Diagfram Generator
+# User Story Workflow Diagram Generator
 
 ## Project Description
 
