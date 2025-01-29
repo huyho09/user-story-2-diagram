@@ -11,8 +11,10 @@ def generate_plantuml(user_story):
     
     if not openai.api_key:
         raise ValueError("OpenAI API key is missing. Please check your .env file.")
+    
+    print(f'Check workflow:, {user_story}')
 
-    prompt = f"Convert this user story to a PlantUML workflow diagram:\n{user_story}"
+    prompt = f"Convert this workflow to plantuml code activity diagram:\n{user_story}"
     
     # Using new syntax from openai library
     response = openai.chat.completions.create(
@@ -28,4 +30,4 @@ def generate_plantuml(user_story):
         return match.group(1).strip()  # Extracted code block
     else:
         print("No code block found in the response.")
-        return None  # Return None explicitly if no code block is found
+        return "Error: No valid PlantUML code generated."  # Return a fallback string

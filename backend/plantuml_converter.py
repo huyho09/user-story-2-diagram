@@ -14,11 +14,13 @@ def generate_diagram(plantuml_code):
 
     # Check if the PlantUML path exists
     if not os.path.exists(plantuml_path):
-        raise FileNotFoundError(f"PlantUML not found at: {plantuml_path}")
-
+        raise FileNotFoundError(f"PlantUML executable not found at: {plantuml_path}")
+    
     # Use subprocess to execute PlantUML
     try:
         subprocess.run([plantuml_path, file_path], check=True)
+        if not os.path.exists(image_path):
+            raise FileNotFoundError("Generated image file not found.")
         print("Diagram generated successfully.")
         return image_path
     except subprocess.CalledProcessError as e:
