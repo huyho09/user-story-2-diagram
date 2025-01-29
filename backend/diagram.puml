@@ -1,13 +1,22 @@
 @startuml
 
+title Admin Employee Creation Workflow
+
 start
-:Action 1;
-if (Decision?) then (yes)
-  :Action 2;
+:Admin Login the system with;
+:Admin email and password;
+-> Navigate to Employee tab;
+-> Click on create employee button;
+-> Admin fill in the employees information;
+
+if (Is email valid and required fields filled?) then (yes)
+  -> Admin click on the Save Button;
+  --> Save employee to database;
+  :Employee successfully created;
 else (no)
-  :Action 3;
+  :Display validation error message;
 endif
-:Action 4;
+
 stop
 
 @enduml

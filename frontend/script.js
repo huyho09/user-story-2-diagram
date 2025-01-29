@@ -1,9 +1,9 @@
 function convertToMarkdown() {
-    const role = document.getElementById("role").value;
-    const want = document.getElementById("want").value;
-    const soThat = document.getElementById("soThat").value;
-    const criteria = document.getElementById("criteria").value;
-    const workflowSteps = document.getElementById("workflowSteps").value;
+    let role = document.getElementById("role").value;
+    let want = document.getElementById("want").value;
+    let soThat = document.getElementById("soThat").value;
+    let criteria = document.getElementById("criteria").value;
+    let workflowSteps = document.getElementById("workflowSteps").value;
 
     const markdown = `
         A. User Story
@@ -25,6 +25,8 @@ function convertToMarkdown() {
     document.getElementById("markdownOutput").innerText = markdown;
 }
 
+var workflow = document.getElementById("workflowSteps").value;
+
 // Submit form data to backend
 document.getElementById("userStoryForm").onsubmit = async function (e) {
     e.preventDefault();
@@ -35,13 +37,13 @@ document.getElementById("userStoryForm").onsubmit = async function (e) {
     //     headers: { "Content-Type": "application/json" },
     //     body: JSON.stringify({ user_story: markdownData })
     // });
-
+    var workflow = document.getElementById("workflowSteps").value;
     // TO DO: using Workflow instead of the whole flow replace markdownData to workflowSteps
     const markdownData = document.getElementById("markdownOutput").innerText;
     const response = await fetch("http://127.0.0.1:5000/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_story: workflowSteps })
+        body: JSON.stringify({ user_story: workflow })
     });
 
     const result = await response.blob();

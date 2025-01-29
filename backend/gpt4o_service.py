@@ -12,7 +12,7 @@ def generate_plantuml(user_story):
     if not openai.api_key:
         raise ValueError("OpenAI API key is missing. Please check your .env file.")
     
-    print(f'Check workflow:, {user_story}')
+    #print(f'Check workflow:, {user_story}')
 
     prompt = f"Convert this workflow to plantuml code activity diagram:\n{user_story}"
     
