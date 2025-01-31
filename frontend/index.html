@@ -31,13 +31,14 @@
                 <label class="form-label">Workflow Steps</label>
                 <textarea class="form-control" id="workflowSteps" rows="5" placeholder="Enter workflow steps..."></textarea>
             </div>
-            <button type="button" class="btn btn-primary" onclick="convertToMarkdown()">Convert to Markdown</button>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
 
         <div class="mt-4">
             <h4>Markdown Output</h4>
             <pre id="markdownOutput" class="border p-3"></pre>
+            <h4>Generated Diagram</h4>
+            <div id="diagramOutput"></div>
         </div>
     </div>
 

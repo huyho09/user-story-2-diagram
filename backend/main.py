@@ -14,7 +14,26 @@ def generate():
     data = request.json.get("user_story")
     plantuml_code = generate_plantuml(data)
     image_path = generate_diagram(plantuml_code)
-    return send_file(image_path, mimetype='image/png')
+    send_file(image_path, mimetype='image/png')
+    if not data:
+        return jsonify({"error": "No user story provided"}), 400
+    # Store the Markdown output to return
+    markdown_output = data  
+    # Generate PlantUML format
+    plantuml_code = generate_plantuml(data)
+    if not plantuml_code:
+        return jsonify({"error": "Failed to extract valid PlantUML code"}), 500
+    # Generate Diagram
+    image_path = generate_diagram(plantuml_code)
+    if not image_path:
+        return jsonify({"error": "Failed to generate diagram"}), 500
+    return jsonify({
+        "markdown_output": markdown_output,
+        "diagram_url": image_path  # Path to the image file
+    })
+@app.route('/diagram.png')
+def serve_diagram():
+    return send_file("diagram.png", mimetype="image/png")
 
 
 if __name__ == '__main__':
