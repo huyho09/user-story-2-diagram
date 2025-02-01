@@ -115,3 +115,6 @@ user-story-2-workflow/
 - Proxy config
 - Remove "Convert to Markdown button" and Markdown output
 - Submit button only send the Workflow Steps
+- Replace submit type button, using ajax call to avoid the page reload when the source code is changed.
+- Define a project external path to save the source code to avoid page reload
+- (Optional) Implement a frontend framework.
