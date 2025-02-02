@@ -38,20 +38,7 @@ This project is a web application that allows users to create user stories and w
 
 ## Project Structure
 ```
-user-story-2-workflow/
-│-- backend/
-│   │-- main.py                    # Flask backend application
-│   │-- gpt4o_service.py           # Module to interact with GPT-4o
-│   │-- plantuml_converter.py      # Module to generate diagram from PlantUML
-│   │-- requirements.txt           # Dependencies
-│-- frontend/
-│   │-- index.html                 # HTML file with Bootstrap form
-│   │-- style.css                   # Custom CSS for styling
-│   │-- script.js                   # JavaScript for handling form submission
-│-- README.md                      # Project documentation
-│-- run_backend.sh                  # Script to run the backend
-│-- run_frontend.sh                  # Script to start frontend (optional for deployment)
-```
+r
 
 ---
 

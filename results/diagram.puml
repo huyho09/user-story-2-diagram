@@ -1,0 +1,22 @@
+@startuml
+
+start
+
+:Admin Login the system with
+Admin email and password;
+
+:Navigate to Employee tab;
+
+:Click on create employee button;
+
+:Admin fill in the employees information;
+
+if (Is email valid and required fields filled?) then (yes)
+    :Click on the Save Button to save employee to database;
+else (no)
+    :Show error message and ask for correction;
+endif
+
+stop
+
+@enduml

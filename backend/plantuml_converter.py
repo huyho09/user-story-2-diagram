@@ -1,9 +1,14 @@
 import subprocess
 import os
+from pathlib import Path
+
+# Define the results directory (where the files will be saved)
+RESULTS_DIR = Path(__file__).parent.parent / "results"
+RESULTS_DIR.mkdir(exist_ok=True)  # Ensure the results folder exists
 
 def generate_diagram(plantuml_code):
-    file_path = "diagram.puml"
-    image_path = "diagram.png"
+    file_path = RESULTS_DIR / "diagram.puml"  
+    image_path = RESULTS_DIR / "diagram.png"
 
     with open(file_path, "w") as file:
         file.write(plantuml_code)
@@ -18,11 +23,11 @@ def generate_diagram(plantuml_code):
     
     # Use subprocess to execute PlantUML
     try:
-        subprocess.run([plantuml_path, file_path], check=True)
-        if not os.path.exists(image_path):
+        subprocess.run([plantuml_path, str(file_path)], check=True)
+        if not image_path.exists():
             raise FileNotFoundError("Generated image file not found.")
         print("Diagram generated successfully.")
-        return image_path
+        return str(image_path)  # Return the absolute image path
     except subprocess.CalledProcessError as e:
         print(f"Error running PlantUML: {str(e)}")
         return None
