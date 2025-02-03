@@ -36,12 +36,6 @@ This project is a web application that allows users to create user stories and w
 
 ---
 
-## Project Structure
-```
-r
-
----
-
 ## Implementation Details
 
 ### Frontend
@@ -51,7 +45,7 @@ r
    - Rich text editor (e.g., TinyMCE or QuillJS) for Workflow Steps.
 
 3. **Buttons**:
-   - "Convert to Markdown": Converts form input to Markdown or plain text format.
+   - ~"Convert to Markdown": Converts form input to Markdown or plain text format.~
    - "Submit": Sends the input data to the backend API.
 
 ---
@@ -76,13 +70,13 @@ r
 ### Prerequisites
 - Python 3.8+
 - Node.js (for frontend dependency management)
-- PlantUML installed locally or hosted online.
+- PlantUML installed locally or hosted online. You can find the link [here](https://plantuml.com/download)
 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/UserStoryWorkflowGenerator.git
-   cd UserStoryWorkflowGenerator
+   git clone https://github.com/huyho09/user-story-2-diagram.git
+   cd user-story-2-diagram
 
 2. Install backend dependencies:
     ```bash
@@ -99,9 +93,9 @@ r
 - ~Remove Bot comment in the `diagram.puml`. We only need the code to send to GPT-4o~
 - ~Check for the issue of `diagram.png`. The image should be displayed.~
 - ~Allow all CORS block~
-- Proxy config
-- Remove "Convert to Markdown button" and Markdown output
-- Submit button only send the Workflow Steps
-- Replace submit type button, using ajax call to avoid the page reload when the source code is changed.
+- ~Proxy config~
+- ~Remove "Convert to Markdown button" and Markdown output~
+- ~Submit button only send the Workflow Steps~
+- ~Replace submit type button, using ajax call to avoid the page reload when the source code is changed.~
 - Define a project external path to save the source code to avoid page reload
 - (Optional) Implement a frontend framework.

@@ -16,9 +16,9 @@ def generate_diagram(plantuml_code):
 
     # Specify the correct PlantUML path
     # Huy is using MacOS. Should replace with your local path that was installed plantuml
-    #plantuml_path = "/opt/homebrew/bin/plantuml"
+    # Huy's MacOS: plantuml_path = "/opt/homebrew/bin/plantuml"
 
-    # Windows path
+    # Windows path, navigate to the folder that contain plantuml.jar
     plantuml_path = os.path.expanduser("~/Desktop/plantuml-mit-1.2025.0.jar")
 
     # Check if the PlantUML path exists
@@ -27,7 +27,7 @@ def generate_diagram(plantuml_code):
     
     # Use subprocess to execute PlantUML
     try:
-        subprocess.run(["java", "-jar", plantuml_path, str(file_path)], check=True)
+        subprocess.run(["java", "-jar", plantuml_path, str(file_path)], check=True) # Window, remember to add "java", "-jar"
         if not image_path.exists():
             raise FileNotFoundError("Generated image file not found.")
         print("Diagram generated successfully.")
