@@ -1,11 +1,47 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-user-story-form',
-  imports: [],
   templateUrl: './user-story-form.component.html',
-  styleUrl: './user-story-form.component.css'
+  styleUrls: ['./user-story-form.component.css']
 })
 export class UserStoryFormComponent {
+  role: string = '';
+  want: string = '';
+  soThat: string = '';
+  criteria: string = '';
+  workflowSteps: string = '';
+  markdownOutput: string = '';
+  diagramUrl: string = '';
 
+  constructor(private apiService: ApiService) {}
+
+  async submitForm() {
+    const markdownData = `
+A. User Story
+
+[AS A] ${this.role}
+
+[I WANT] ${this.want}
+
+[SO THAT] ${this.soThat}
+
+B. Acceptance Criteria
+
+${this.criteria}
+
+C. Workflow Steps
+
+${this.workflowSteps}
+    `;
+
+    try {
+      const result = await this.apiService.generateDiagram(markdownData);
+      this.markdownOutput = result.markdown_output;
+      this.diagramUrl = `http://127.0.0.1:5000/${result.diagram_url}`;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
 }
