@@ -5,6 +5,10 @@ from plantuml_converter import generate_diagram
 import os
 from plantuml import PlantUML, PlantUMLHTTPError
 
+# Set proxy environment variables
+os.environ['http_proxy'] = 'http://127.0.0.1:3128'
+os.environ['https_proxy'] = 'http://127.0.0.1:3128'
+
 app = Flask(__name__)
 # Enable CORS for all routes
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True, allow_headers=["Content-Type"])

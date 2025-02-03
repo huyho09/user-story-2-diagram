@@ -4,3 +4,4 @@ plantuml
 python-dotenv
 six
 requests
+flask_cors
