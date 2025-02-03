@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-story-form',
   templateUrl: './user-story-form.component.html',
-  styleUrls: ['./user-story-form.component.css']
+  styleUrls: ['./user-story-form.component.css'],
+  standalone: true,
+  imports: [FormsModule, CommonModule] // Import FormsModule here
 })
 export class UserStoryFormComponent {
   role: string = '';
