@@ -1,28 +1,17 @@
 @startuml
-title Create New Employee Profile Workflow
-
+|Admin|
 start
-
 :Click on "Create Employee";
-
 repeat
-  :Fill in the required details;
-repeat while (Fields required) is (yes)
+    :Fill in the required details;
+    :Is form completed?;
+while (no) is (no)
+:Submit the form;
+:Save new employee profile;
+:Success notification after saving;
+stop
 
-// Acceptance criteria: All required fields must be filled before submission
-if (All required fields filled?) then (yes)
-  :Submit the form;
-  // Acceptance criteria: Success notification after saving
-  :Show success notification;
-else (no)
-  repeat while (All required fields filled?) is (no)
-    :Prompt to fill all required fields;
-  end repeat
-endif
-
--> No
+|Admin|
 :Option to cancel and return without saving;
-:Return to main menu;
 
-end
 @enduml

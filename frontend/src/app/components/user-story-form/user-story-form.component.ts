@@ -43,7 +43,7 @@ ${this.workflowSteps}
     try {
       const result = await this.apiService.generateDiagram(markdownData);
       this.markdownOutput = result.markdown_output;
-      this.diagramUrl = `http://127.0.0.1:5000/${result.diagram_url}`;
+      this.diagramUrl = `http://127.0.0.1:5000${result.diagram_url}`;
     } catch (error) {
       console.error("Error:", error);
     }

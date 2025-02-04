@@ -1,0 +1,27 @@
+@startuml
+start
+
+:Search for an employee;
+repeat
+    :Edit profile details;
+    ->
+
+    :Validate changes;
+    if (Are changes valid?) then (Yes)
+        :Save changes;
+        :Show success notification;
+    else (No)
+        :Show error and prompt to re-edit;
+    endif
+
+    :Option to discard changes;
+    if (Discard changes?) then (Yes)
+        :Discard changes;
+    else (No)
+        :Save changes;
+        :Show success notification;
+    endif
+repeat while (More changes?)
+
+end
+@enduml

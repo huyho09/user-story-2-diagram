@@ -14,7 +14,7 @@ def generate_plantuml(user_story):
     
     #print(f'Check workflow:, {user_story}')
 
-    prompt = f"Convert this workflow to plantuml code activity diagram:\n{user_story}"
+    prompt = f"Convert this workflow to plantuml code activity diagram without any comment in it:\n{user_story}"
     
     # Using new syntax from openai library
     response = openai.chat.completions.create(
