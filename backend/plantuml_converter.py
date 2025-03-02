@@ -18,7 +18,8 @@ def generate_diagram(plantuml_code):
     # Huy's MacOS: plantuml_path = "/opt/homebrew/bin/plantuml"
 
     # Windows path, navigate to the folder that contain plantuml.jar
-    plantuml_path = os.path.expanduser("~/Desktop/plantuml-mit-1.2025.0.jar")
+    #plantuml_path = os.path.expanduser("~/Desktop/plantuml-mit-1.2025.0.jar") # Windows
+    plantuml_path = os.path.expanduser("~/Downloads/plantuml-mit-1.2025.1.jar") # MacOS
 
     # Check if the PlantUML path exists
     if not os.path.exists(plantuml_path):
